@@ -3,7 +3,18 @@ on:
   pull_request:
     types:
       - opened
+    branches:
+      - master # only cover master 
+      - 'dev-*' #it would catch all the branches that starts with 'dev-'
+      - 'feat/**' # it would catch all branches like: feat/new feat/new/button
   workflow_dispatch:
+  push:
+    branches:
+      - master # only cover master 
+      - 'dev-*' #it would catch all the branches that starts with 'dev-'
+      - 'feat/**' # it would catch all branches like: feat/new feat/new/button
+    paths-ignore:
+      - '.github/workflows/*'
 jobs:
   deploy:
     runs-on: ubuntu-latest
